@@ -20,6 +20,8 @@ spec:
         type: daemon
         env: dev
     spec:
+      nodeSelector:
+        itdaemon: kuard
       containers:
         - name: kuard
           image: vanan15/kuard-amd64:2
