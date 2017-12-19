@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+  name: kuard-daemon
+  namespace: kube-system
+  labels:
+    app: kuard
+    type: daemon
+    env: dev
+spec:
+  selector:
+    matchLabels:
+      app: kuard
+      type: daemon
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: kuard
+        type: daemon
+        env: dev
+    spec:
+      containers:
+        - name: kuard
+          image: vanan15/kuard-amd64:2
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
